@@ -2,11 +2,11 @@
 # Required config
 ###############################################################################
 
-export TENANT=
-export CLOUD=
-export GROUP=
+export TENANT="/807152304871829504"
+export CLOUD="/azure-rbc-se-emea"
+export GROUP="/rbc-aks-demo-cluster"
 
-export APOCTL_API="https://api.east-01.network.prismacloud.io"
+export APOCTL_API="https://api.east-02.network.prismacloud.io "
 
 # There are a few situations where APOCTL_API_SKIP_VERIFY may be necessary
 # export APOCTL_API_SKIP_VERIFY=false
