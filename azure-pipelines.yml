@@ -20,7 +20,7 @@ stages:
     displayName: Agent
     pool:
       vmImage: ubuntu-latest
-    steps:
+ steps:
     - checkout: self
     - task: DownloadSecureFile@1
        name: aporetoCreds
