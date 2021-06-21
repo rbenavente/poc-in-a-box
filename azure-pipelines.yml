@@ -20,17 +20,17 @@ stages:
     displayName: Agent
     pool:
       vmImage: ubuntu-latest
- steps:
+    steps:
     - checkout: self
     - task: DownloadSecureFile@1
-       name: aporetoCreds
-       displayName: 'Aporeto Creds'
-       inputs:
-         secureFile: 'azure-devops.json'
+      name: aporetoCreds
+      displayName: 'Aporeto Creds'
+      inputs:
+        secureFile: 'azure-devops.json'
 
-      - script: |
-         echo Installing $(aporetoCreds.secureFilePath) to the trusted .apoctl directory...
-         mv $(aporetoCreds.secureFilePath) ~
+    - script: |
+        echo Installing $(aporetoCreds.secureFilePath) to the trusted .apoctl directory...
+        mv $(aporetoCreds.secureFilePath) ~
     - task: CmdLine@2
       inputs:
         script: |
