@@ -4,7 +4,7 @@
 
 export TENANT="/807152304871829504"
 export CLOUD="/azure-rbc-se-emea"
-export GROUP="/rbc-aks-demo-cluster"
+export GROUP="/rbc-aks-cluster"
 
 export APOCTL_API="https://api.east-02.network.prismacloud.io "
 
