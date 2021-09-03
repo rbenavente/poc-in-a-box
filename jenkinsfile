@@ -1,7 +1,7 @@
 node {
 
-def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
-def APOCTL_CREDS = credentials('pipeline.cred')
+//def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
+//def APOCTL_CREDS = credentials('pipeline.cred')
 def TENANT='807152304871829504'
 def CLOUD='cto-demo-rbc'
 def GROUP='demo-build'
@@ -23,7 +23,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 
 }
 stage('Deploy app and Policy as Code') {
-withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"], "TENANT=${TENANT}", "CLOUD=${CLOUD}", "GROUP=${GROUP}"]) {
+withEnv (["TENANT=${TENANT}","CLOUD=${CLOUD}","GROUP=${GROUP}"]) {
 
 sh "pwd"
 sh "ls -la"
