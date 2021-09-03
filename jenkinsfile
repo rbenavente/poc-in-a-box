@@ -23,12 +23,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 
 }
 stage('Deploy app and Policy as Code') {
-  environment { 
- TENANT='807152304871829504'
- CLOUD='cto-demo-rbc'
- GROUP='demo-build'
-                    
-                }
+sh "source env_shell"
 sh "pwd"
 sh "ls -la"
 sh "echo $TENANT"
