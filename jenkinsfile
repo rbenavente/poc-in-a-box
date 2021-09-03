@@ -5,6 +5,7 @@ node {
 def TENANT='807152304871829504'
 def CLOUD='cto-demo-rbc'
 def GROUP='demo-build'
+def APOCTL_API="https://api.east-02.network.prismacloud.io "
 
 
 stage('Clone repository') {
@@ -23,7 +24,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 
 }
 stage('Deploy app and Policy as Code') {
-withEnv (["TENANT=${TENANT}","CLOUD=${CLOUD}","GROUP=${GROUP}"]) {
+withEnv (["TENANT=${TENANT}","CLOUD=${CLOUD}","GROUP=${GROUP}", "APOCTL_API=${APOCTL_API}"]) {
 
 sh "pwd"
 sh "ls -la"
