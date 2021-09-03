@@ -1,6 +1,11 @@
 node {
 def APOCTL_NAMESPACE = "/807152304871829504/cto-demo-rbc/demo-build"
 def APOCTL_CREDS = "pipeline.creds"
+def TENANT="807152304871829504"
+def CLOUD="cto-demo-rbc"
+def GROUP="demo-build"
+
+
 stage('Clone repository') {
 checkout scm
 }
@@ -9,6 +14,7 @@ stage('Download apoctl') {
 sh "curl -o /usr/local/bin/apoctl https://download.aporeto.com/apoctl/linux/apoctl"
 sh "sudo chmod +x /usr/local/bin/apoctl"
 }
+
 stage('Check if the authorization works') {
 withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}",
 
@@ -18,51 +24,3 @@ sh "apoctl auth verify"
 
 }
 
-stage('Create the Jenkins namespace') {
-withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}",
-
-"APOCTL_CREDS=${APOCTL_CREDS}"]) {
-
-sh "apoctl api import -f Jenkins.yaml -n
-
-/807152304871829504/my_cloud_account"
-
-}
-
-}
-stage('Import the Network List') {
-withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}",
-
-"APOCTL_CREDS=${APOCTL_CREDS}"]) {
-
-sh "apoctl api import -f External.yaml -n
-
-/807152304871829504/my_cloud_account/Jenkins"
-
-}
-
-}
-stage('Import the Internal Traffic Ruleset') {
-withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}",
-
-"APOCTL_CREDS=${APOCTL_CREDS}"]) {
-
-sh "apoctl api import -f Allow_internal_traffic.yaml -n
-
-/807152304871829504/my_cloud_account/Jenkins"
-
-}
-}
-stage('Import the External Ruleset') {
-withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}",
-
-"APOCTL_CREDS=${APOCTL_CREDS}"]) {
-
-sh "apoctl api import -f Allow_External.yaml -n
-
-/807152304871829504/my_cloud_account/Jenkins"
-
-}
-
-}
-}
