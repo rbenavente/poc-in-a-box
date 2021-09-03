@@ -17,7 +17,7 @@ sh "sudo chmod +x /usr/local/bin/apoctl"
 
 stage('Check if the authorization works') {
 withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"]) 
-{ sh "cat APOCTL_CREDS" 
+{ sh "cat $APOCTL_CREDS" 
 // sh "apoctl auth verify"
 }
 
