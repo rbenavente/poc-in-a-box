@@ -24,7 +24,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 }
 stage('Deploy app and Policy as Code') {
 sh "pwd"
-sh "ls - la"
+sh "ls -la"
 sh "export TENANT= '807152304871829504' "
 sh "export CLOUD = 'cto-demo-rbc' "
 sh "export GROUP = 'demo-build' "
