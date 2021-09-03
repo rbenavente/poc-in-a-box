@@ -1,10 +1,13 @@
 node {
-def APOCTL_NAMESPACE = "/807152304871829504/cto-demo-rbc/demo-build"
-def APOCTL_CREDS = credentials("pipeline.creds")
-def TENANT="807152304871829504"
-def CLOUD="cto-demo-rbc"
-def GROUP="demo-build"
-
+environment {
+        SECRET_FILE_ID = credentials('secret-file-id')
+     
+APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-buil'
+ APOCTL_CREDS = credentials('pipeline.cred')
+ TENANT="807152304871829504"
+CLOUD="cto-demo-rbc"
+ GROUP="demo-build"
+ }
 
 stage('Clone repository') {
 checkout scm
@@ -17,7 +20,7 @@ sh "sudo chmod +x /usr/local/bin/apoctl"
 
 stage('Check if the authorization works') {
 withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"]) 
-{
+{sh " echo "Global property file: ${APOCTL_CREDS}
 sh "apoctl auth verify"
 }
 
