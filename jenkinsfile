@@ -23,7 +23,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 
 }
 stage('Deploy app and Policy as Code') {
-sh "source env_shell"
+//sh "source env_shell"
 sh "apoctl configure -n /$GROUP/$CLOUD -t $TOKEN"
 sh "all/create"
 
