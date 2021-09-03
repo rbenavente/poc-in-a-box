@@ -2,9 +2,9 @@ node {
 
 // def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
 // def APOCTL_CREDS = credentials('pipeline.cred')
-// def TENANT='807152304871829504'
-// def CLOUD='cto-demo-rbc'
-// def GROUP='demo-build'
+TENANT='807152304871829504'
+CLOUD='cto-demo-rbc'
+GROUP='demo-build'
 
 
 stage('Clone repository') {
