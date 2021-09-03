@@ -5,7 +5,7 @@ node {
 def TENANT='807152304871829504'
 def CLOUD='cto-demo-rbc'
 def GROUP='demo-build'
-def APOCTL_API="https://api.east-02.network.prismacloud.io "
+def APOCTL_API="https://api.east-02.network.prismacloud.io"
 
 
 stage('Clone repository') {
