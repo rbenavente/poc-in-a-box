@@ -1,7 +1,7 @@
 node {
 
 def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
-def APOCTL_CRED = credentials('pipeline.cred')
+def APOCTL_CREDS = credentials('pipeline.cred')
 def TENANT='807152304871829504'
 def CLOUD='cto-demo-rbc'
 def GROUP='demo-build'
@@ -18,7 +18,7 @@ sh "sudo chmod +x /usr/local/bin/apoctl"
 
 stage('Check if the authorization works') {
 withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"]) 
-{sh " export APOCTL_CREDS=$PWD/APOCTL_CRED"
+{sh " export APOCTL_CREDS=$PWD/APOCTL_CREDS"
 sh "apoctl auth verify"
 }
 
