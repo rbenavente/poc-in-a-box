@@ -17,13 +17,16 @@ sh "sudo chmod +x /usr/local/bin/apoctl"
 }
 
 stage('Check if the authorization works') {
-withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')])
-// withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"]) 
-{
-sh "apoctl auth verify"
+withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')]){
+ sh "apoctl auth verify"
 }
 
 }
+stage('Deploy app and Policy as Code') {
+sh "source env_shell"
+sh "apoctl configure -n /$GROUP/$CLOUD -t $TOKEN"
+sh "all/create"
 
+}
 
 }
