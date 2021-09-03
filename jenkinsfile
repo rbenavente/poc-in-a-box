@@ -6,7 +6,7 @@ TENANT='807152304871829504'
 CLOUD='cto-demo-rbc'
 GROUP='demo-build'
 }
-
+stages {
 stage('Clone repository') {
 checkout scm
 }
@@ -31,6 +31,7 @@ sh "echo $GROUP"
 sh "echo $CLOUD"
 sh "all/create"
 
+}
 }
 
 }
