@@ -23,6 +23,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 
 }
 stage('Deploy app and Policy as Code') {
+withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"], "TENANT=${TENANT}", "CLOUD=${CLOUD}", "GROUP=${GROUP}"]) {
 
 sh "pwd"
 sh "ls -la"
@@ -33,5 +34,5 @@ sh "all/create"
 
 }
 
-
+}
 }
