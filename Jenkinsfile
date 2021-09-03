@@ -1,11 +1,10 @@
 node {
 
-//def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
-//def APOCTL_CREDS = credentials('pipeline.cred')
-def TENANT='807152304871829504'
-def CLOUD='cto-demo-rbc'
-def GROUP='demo-build'
-def APOCTL_API="https://api.east-02.network.prismacloud.io"
+
+def TENANT='807152304871829504'    // Please modify with your tenand id value
+def CLOUD='cto-demo-rbc'          // Please modify with your cloud account value
+def GROUP='demo-build'           //Please modify with your cluster name where you deployed the enforcer
+def APOCTL_API="https://api.east-02.network.prismacloud.io" // Please modify with Console API
 
 
 stage('Clone repository') {
@@ -18,6 +17,8 @@ sh "sudo chmod +x /usr/local/bin/apoctl"
 }
 
 stage('Check if the authorization works') {
+// Before this step you need to create the credencials file in the console at /TENANT/CLOUD namespace and import this file as a secret in Jenkins
+
 withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')]){
  sh "apoctl auth verify"
 }
