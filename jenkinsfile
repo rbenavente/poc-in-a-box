@@ -1,11 +1,11 @@
-node {
-
+pipeline {
+ environment {
 // def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
 // def APOCTL_CREDS = credentials('pipeline.cred')
 TENANT='807152304871829504'
 CLOUD='cto-demo-rbc'
 GROUP='demo-build'
-
+}
 
 stage('Clone repository') {
 checkout scm
@@ -26,7 +26,7 @@ stage('Deploy app and Policy as Code') {
 
 sh "pwd"
 sh "ls -la"
-sh "echo $TENANT"
+sh "echo ${TENANT}"
 sh "echo $GROUP"
 sh "echo $CLOUD"
 sh "all/create"
