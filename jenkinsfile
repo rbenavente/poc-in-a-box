@@ -1,6 +1,6 @@
 node {
-# def APOCTL_NAMESPACE = "/807152304871829504/cto-demo-rbc/demo-build"
-# def APOCTL_CREDS = "pipeline.creds"
+def APOCTL_NAMESPACE = "/807152304871829504/cto-demo-rbc/demo-build"
+def APOCTL_CREDS = "pipeline.creds"
 stage('Clone repository') {
 checkout scm
 }
