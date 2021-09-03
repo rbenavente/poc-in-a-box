@@ -2,9 +2,9 @@ node {
 
 def APOCTL_NAMESPACE ='/807152304871829504/cto-demo-rbc/demo-build'
 def APOCTL_CREDS = 'pipeline.cred'
-def TENANT="807152304871829504"
-def CLOUD="cto-demo-rbc"
-def GROUP="demo-build"
+def TENANT='807152304871829504'
+def CLOUD='cto-demo-rbc'
+def GROUP='demo-build'
 
 
 stage('Clone repository') {
@@ -16,15 +16,12 @@ sh "curl -o /usr/local/bin/apoctl https://download.aporeto.com/apoctl/linux/apoc
 sh "sudo chmod +x /usr/local/bin/apoctl"
 }
 
-//stage('Check if the authorization works') {
-//withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"]) 
-//{sh "apoctl auth verify"
-//}
-
-//}
-
-stage('deploy app and rules') {
-sh "export "
-sh "sudo chmod +x /usr/local/bin/apoctl"
+stage('Check if the authorization works') {
+withEnv (["APOCTL_NAMESPACE=${APOCTL_NAMESPACE}", "APOCTL_CREDS=${APOCTL_CREDS}"]) 
+{sh "apoctl auth verify"
 }
+
+}
+
+
 }
