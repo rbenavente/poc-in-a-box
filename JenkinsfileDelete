@@ -24,7 +24,7 @@ withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')
 }
 
 }
-stage('Deploy app and Policy as Code') {
+stage('Delete app and Policy as Code') {
 withCredentials([file(credentialsId: 'pipeline.creds', variable: 'APOCTL_CREDS')]) {
 withEnv (["TENANT=${TENANT}","CLOUD=${CLOUD}","GROUP=${GROUP}", "APOCTL_API=${APOCTL_API}"]) {
 
